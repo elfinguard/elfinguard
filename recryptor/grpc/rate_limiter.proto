@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+option go_package = "github.com/elfinhost/elfinhost-lab/recryptor/grpc";
+
+package recryptor;
+
+// The RateLimiter service definition.
+service RateLimiter {
+  rpc CanServe (RateLimitRequest) returns (RateLimitReply) {}
+}
+
+message RateLimitRequest {
+  string remoteAddr = 1;
+  string path       = 2;
+  string query      = 3;
+  bytes  token      = 4;
+  bytes  guide      = 5;
+}
+
+message RateLimitReply {
+  bool ok = 1;
+}
+

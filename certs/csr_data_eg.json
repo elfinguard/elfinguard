@@ -1,0 +1,9 @@
+{
+  "commonName": "elfinhost.org",
+  "country": "CN",
+  "province": "Beijing",
+  "locality": "Beijing",
+  "organization": "ElfinHostLab",
+  "organizationalUnit": "IT",
+  "emailAddress": "dev@elfinhost.org"
+}

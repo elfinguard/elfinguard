@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+option go_package = "github.com/elfinhost/elfinhost-lab/recryptor/grpc";
+
+package recryptor;
+
+// The ChunkGetter service definition.
+service ChunkGetter {
+  rpc GetChunk (GetChunkRequest) returns (GetChunkReply) {}
+}
+
+message DecryptTaskToken {
+ int64  expireTime    = 1;
+ bytes  fileId        = 2;
+ bytes  recryptorSalt = 3;
+ bytes  secret        = 4;
+ string remoteAddr    = 5;
+ bytes  viewerAccount = 6;
+ bytes  contract      = 7;
+}
+
+message GetChunkRequest {
+  DecryptTaskToken token = 1;
+  string           path  = 2;
+  int64            index = 3;
+}
+message GetChunkReply {
+  string errStr     = 1;
+  bytes  chunk      = 2;
+  int64  totalBytes = 3;
+}
